@@ -13,9 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
+from task.views import GenerateRandomUserView, UsersListView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url('users/', UsersListView.as_view(), name='users_list'),
+    url('generate/', GenerateRandomUserView.as_view(), name='generate')
+
 ]
